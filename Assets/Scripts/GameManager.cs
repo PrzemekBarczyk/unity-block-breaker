@@ -6,7 +6,7 @@ public class GameManager : MonoSingleton<GameManager>
 	[SerializeField] [Min(0)] int _highScoreValue = 0;
 	[SerializeField] Text _hightScoreText;
 
-	[SerializeField] [Min(0)] int _scoreValue = 0;
+	[SerializeField] [Min(0)] static int _scoreValue = 0;
 	[SerializeField] Text _scoreText;
 
 	[SerializeField] [Min(1)] int _livesValue = 3;
@@ -55,5 +55,10 @@ public class GameManager : MonoSingleton<GameManager>
 		}
 
         _livesText.text = _livesValue.ToString();
+	}
+
+	public void NextLevel()
+	{
+		_sceneManager.LoadNextLevel();
 	}
 }

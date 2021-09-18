@@ -6,10 +6,12 @@ public class Block : MonoBehaviour
 
 	[SerializeField] int _score = 1;
 
+	BlockManager _blockManager;
 	GameManager _gameManager;
 
 	void Start()
 	{
+		_blockManager = FindObjectOfType<BlockManager>();
 		_gameManager = GameManager.Instance;
 	}
 
@@ -28,7 +30,11 @@ public class Block : MonoBehaviour
 		if (_strength == 0)
 		{
 			_gameManager.AddScore(_score);
+			_blockManager.RemoveBlock(this);
 			Destroy(gameObject);
+
+			if (_blockManager.BlocksLeft() <= 0)
+				_gameManager.NextLevel();
 		}
 	}
 }
