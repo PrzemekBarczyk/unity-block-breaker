@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoSingleton<GameManager>
 {
+	[SerializeField] [Min(0)] int _highScoreValue = 0;
+	[SerializeField] Text _hightScoreText;
+
 	[SerializeField] [Min(0)] int _scoreValue = 0;
 	[SerializeField] Text _scoreText;
 
@@ -16,6 +19,9 @@ public class GameManager : MonoSingleton<GameManager>
 
 	void Start()
 	{
+		_highScoreValue = PlayerPrefs.GetInt("high score");
+
+		_hightScoreText.text = _highScoreValue.ToString();
 		_scoreText.text = _scoreValue.ToString();
 		_livesText.text = _livesValue.ToString();
 
@@ -37,6 +43,9 @@ public class GameManager : MonoSingleton<GameManager>
 
 		if (_livesValue <= 0)
 		{
+			if (_scoreValue > _highScoreValue)
+				PlayerPrefs.SetInt("high score", _scoreValue);
+
 			_sceneManager.LoadFirstLevel();
 		}
 		else
