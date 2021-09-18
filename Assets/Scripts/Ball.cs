@@ -9,9 +9,11 @@ public class Ball : MonoBehaviour
 	[SerializeField] [Range(200, 400)] float _bounceOfPlayerRange = 300f;
 	[Space]
 
-	[SerializeField] Paddle _paddle;
+	Paddle _paddle;
 
-	Vector3 _offsetToPlayer;
+	Vector3 _startPosition;
+
+	Vector3 _offsetToPaddle;
 
 	bool _isGluedToPlayer = true;
 
@@ -20,11 +22,15 @@ public class Ball : MonoBehaviour
 	void Awake()
 	{
 		_myRigidbody = GetComponent<Rigidbody2D>();
+
+		_paddle = FindObjectOfType<Paddle>();
 	}
 
 	void Start()
 	{
-		_offsetToPlayer = _paddle.transform.position - transform.position;
+		_startPosition = transform.position;
+
+		_offsetToPaddle = _paddle.transform.position - transform.position;
 	}
 
 	void Update()
@@ -41,7 +47,7 @@ public class Ball : MonoBehaviour
 
 	void FollowPlayer()
 	{
-		transform.position = _paddle.transform.position - _offsetToPlayer;
+		transform.position = _paddle.transform.position - _offsetToPaddle;
 	}
 
 	void OnCollisionEnter2D(Collision2D collision)
@@ -54,5 +60,11 @@ public class Ball : MonoBehaviour
 			_myRigidbody.velocity = Vector2.zero;
 			_myRigidbody.AddForce(new Vector2(xForce, yForce));
 		}
+	}
+
+	public void ResetPosition()
+	{
+		_isGluedToPlayer = true;
+		transform.position = _startPosition;
 	}
 }

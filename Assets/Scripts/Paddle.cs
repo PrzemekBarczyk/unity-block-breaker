@@ -8,6 +8,8 @@ public class Paddle : MonoBehaviour
     float _minXRange;
     float _maxXRange;
 
+    Vector3 _startPosition;
+
     void Start()
     {
         if (_leftWall == null) Debug.LogWarning("Field is null");
@@ -15,6 +17,8 @@ public class Paddle : MonoBehaviour
 
         _minXRange = _leftWall.position.x + _leftWall.localScale.x / 2 + transform.localScale.x / 2;
         _maxXRange = _rightWall.position.x - _rightWall.localScale.x / 2 - transform.localScale.x / 2;
+
+        _startPosition = transform.position;
     }
 
     void Update()
@@ -27,5 +31,10 @@ public class Paddle : MonoBehaviour
         Vector2 mousePositionInWordPoints = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         transform.position = new Vector3(Mathf.Clamp(mousePositionInWordPoints.x, _minXRange, _maxXRange), transform.position.y, transform.position.z);
+    }
+
+    public void ResetPosition()
+	{
+        transform.position = _startPosition;
     }
 }
