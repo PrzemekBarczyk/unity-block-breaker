@@ -214,9 +214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a935f7321ec3ad47a160807819e8b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scoreValue: 0
+  _scoreText: {fileID: 1277726693}
   _livesValue: 3
   _livesText: {fileID: 1626933854}
-  _ballPrefab: {fileID: 3903594243593332194, guid: b89a4258d5b3aa643b48dc75a7ee988c, type: 3}
 --- !u!4 &48034340
 Transform:
   m_ObjectHideFlags: 0
@@ -1928,6 +1929,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 455893590482044627, guid: 1205a88d9916fa54fba54f31d204e49b, type: 3}
   m_PrefabInstance: {fileID: 1261673229}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1277726693 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1638965404760316359, guid: ba17e6d4e280bde4b9502d496047e146, type: 3}
+  m_PrefabInstance: {fileID: 1638965405004279623}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1317935517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2052,17 +2064,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 455893590482044627, guid: 1205a88d9916fa54fba54f31d204e49b, type: 3}
   m_PrefabInstance: {fileID: 1383966788}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1408612616 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1803906444121214362, guid: de967958cee49ff4ba30fbfd1ee80a2b, type: 3}
-  m_PrefabInstance: {fileID: 8825558098935345966}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 984cb972f789f244cba68daaa6064bde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1432784979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3326,10 +3327,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3903594243593332194, guid: b89a4258d5b3aa643b48dc75a7ee988c, type: 3}
-      propertyPath: _paddle
-      value: 
-      objectReference: {fileID: 1408612616}
     - target: {fileID: 4735183778963126780, guid: b89a4258d5b3aa643b48dc75a7ee988c, type: 3}
       propertyPath: m_Name
       value: Ball
